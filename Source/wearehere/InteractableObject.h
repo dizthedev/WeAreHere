@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "InteractableObject.generated.h"
 
+class UCameraComponent;
+class ACharacter;
+
 UCLASS()
 class WEAREHERE_API AInteractableObject : public AActor
 {
@@ -20,7 +23,24 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* MyMesh;
+
+	UPROPERTY(EditAnywhere)
+		USceneComponent* HoldingComp;
+
+	UFUNCTION()
+		void RotateActor();
+
+	UFUNCTION()
+		void Pickup();
+
+	bool bHolding;
+	bool bGravity;
+
+	FRotator ControlRotation;
+	ACharacter* MyCharacter;
+	UCameraComponent* PlayerCamera;
+	FVector ForwardVector;
 };
