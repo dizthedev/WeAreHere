@@ -22,6 +22,10 @@ APlayerCharacter::APlayerCharacter()
 	HoldingComponent->AddRelativeLocation(FVector(50.0f, 0, 0));
 	HoldingComponent->SetupAttachment(RootComponent);
 
+	LeftHandComponent = CreateDefaultSubobject<USceneComponent>(TEXT("LeftHandComponent"));
+	LeftHandComponent->AddRelativeLocation(FVector(100.0f, -60.0f, 48.0f));
+	LeftHandComponent->SetupAttachment(RootComponent);
+
 	// set our turn rates for input
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
@@ -52,7 +56,7 @@ void APlayerCharacter::Tick(float DeltaTime)
 	ForwardVector = Cam->GetForwardVector();
 	End = ((ForwardVector * 200.0f) + Start);
 
-	DrawDebugLine(GetWorld(), Start, End, FColor::Blue.WithAlpha(60), false, 1, 0, .5f);
+	//DrawDebugLine(GetWorld(), Start, End, FColor::Blue.WithAlpha(60), false, 1, 0, .5f);
 
 	if (!bHoldingItem)
 	{

@@ -42,6 +42,7 @@ public:
 	float PitchMin;
 
 	FVector HoldingComp;
+	FVector LHComp;
 	FRotator LastCamRotation;
 
 	FVector Start;
@@ -93,4 +94,6 @@ private:
 	UPROPERTY(EditAnywhere)
 		class USceneComponent* HoldingComponent;
 
+	UPROPERTY(EditAnywhere)
+		class USceneComponent* LeftHandComponent;
 };
